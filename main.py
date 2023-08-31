@@ -18,6 +18,7 @@ for key in servers:
 
 clock = 0
 sonic = 0
+sonic_time = 0
 last = 999
 ping_time = 0
 
@@ -36,9 +37,11 @@ for key in near_serv:
     print(ip)
     print(ping_time)
     print(last)
+    print(sonic_time)
     if clock > 0:
         if ping_time < last:
             sonic = clock
+            sonic_time = ping_time
         else:
             sonic = sonic
     clock = clock + 1
