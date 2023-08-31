@@ -19,17 +19,13 @@ for key in servers:
         near_serv.append(serv)
     clock = clock + 1
 
-# ping_pong = subprocess.run(["ping", "-n", "1", "1.1.1.1"], capture_output=True)
-# ping_result = ping_pong.stdout.decode()
-# ping_time = ping_result.split("Average = ", 1)[1]
-# print(ping_time)
 clock = 0
 sonic = 0
 last = 999
 
 for key in near_serv:
-    # if clock > len(near_serv):
-    #    break
+    if clock > len(near_serv):
+        break
     serv = near_serv[clock]
     ip = serv["ipv4_addr_in"]
     ping_pong = subprocess.run(["ping", "-n", "1", ip], capture_output=True)
@@ -44,3 +40,5 @@ for key in near_serv:
             sonic = clock
     clock = clock + 1
     last = ping_time
+
+print(near_serv[sonic])
