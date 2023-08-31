@@ -8,10 +8,7 @@ servers = json.loads(api.text)
 clock = 0
 
 print(type(servers))
-x = servers[0]
-y = 0
 near_serv = []
-print(x["country_code"])
 
 for key in servers:
     serv = servers[clock]
@@ -35,9 +32,12 @@ for key in near_serv:
     ping_time = int(ping_time)
     print(ip)
     print(ping_time)
+    print(last)
     if clock > 0:
-        if ping_time < last:
+        if ping_time > last:
             sonic = clock
+        else:
+            sonic = sonic
     clock = clock + 1
     last = ping_time
 
