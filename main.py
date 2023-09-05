@@ -51,4 +51,4 @@ for key in near_serv:
 
 fastest = near_serv[sonic]
 fastest = fastest["hostname"]
-print(f"Fastest Server: {fastest}")
+print(f"\nFastest Server: {fastest}")
