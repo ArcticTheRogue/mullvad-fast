@@ -7,12 +7,15 @@ api = requests.get("https://api.mullvad.net/www/relays/wireguard/")
 servers = json.loads(api.text)
 clock = 0
 
+# Country Code Option
+country_code = "us"
+
 print(type(servers))
 near_serv = []
 
 for key in servers:
     serv = servers[clock]
-    if serv["country_code"] == "us":
+    if serv["country_code"] == country_code:
         near_serv.append(serv)
     clock = clock + 1
 
@@ -33,9 +36,9 @@ for key in near_serv:
         ping_time = ping_time.replace("ms", "")
         ping_time = int(ping_time)
     print(ip)
-    print(ping_time)
-    print(last)
-    print(sonic_time)
+    print(f"Ping Time: {ping_time}")
+    print(f"Last Ping Time: {last}")
+    print(f"Fastest Time: {sonic_time}")
     if sonic_time == 0:
         sonic_time = ping_time
     if clock > 0:
@@ -46,4 +49,5 @@ for key in near_serv:
     clock = clock + 1
     last = ping_time
 
-print(near_serv[sonic])
+fastest = near_serv[sonic]
+print(fastest["hostname"])
