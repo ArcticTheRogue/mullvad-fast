@@ -23,8 +23,6 @@ last = 999
 ping_time = 0
 
 for key in near_serv:
-    if clock > len(near_serv):
-        break
     serv = near_serv[clock]
     ip = serv["ipv4_addr_in"]
     ping_pong = subprocess.run(["ping", "-n", "1", ip], capture_output=True)
@@ -38,10 +36,13 @@ for key in near_serv:
     print(ping_time)
     print(last)
     print(sonic_time)
+    if sonic_time == 0:
+        sonic_time = ping_time
     if clock > 0:
         if ping_time <= last & ping_time <= sonic_time:
             sonic = clock
             sonic_time = ping_time
+            print("working")
     clock = clock + 1
     last = ping_time
 
