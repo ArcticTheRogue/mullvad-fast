@@ -45,7 +45,6 @@ for key in near_serv:
         if ping_time <= last & ping_time <= sonic_time:
             sonic = clock
             sonic_time = ping_time
-            print("working")
     clock = clock + 1
     last = ping_time
 
