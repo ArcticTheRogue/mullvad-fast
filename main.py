@@ -50,4 +50,5 @@ for key in near_serv:
     last = ping_time
 
 fastest = near_serv[sonic]
-print(fastest["hostname"])
+fastest = fastest["hostname"]
+print(f"Fastest Server: {fastest}")
