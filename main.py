@@ -17,7 +17,7 @@ for key in servers:
     serv = servers[clock]
     if serv["country_code"] == country_code:
         near_serv.append(serv)
-    clock = clock + 1
+    clock += 1
 
 clock = 0
 sonic = 0
@@ -45,7 +45,7 @@ for key in near_serv:
         if ping_time <= last & ping_time <= sonic_time:
             sonic = clock
             sonic_time = ping_time
-    clock = clock + 1
+    clock += 1
     last = ping_time
 
 fastest = near_serv[sonic]
